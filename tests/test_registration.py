@@ -1,7 +1,7 @@
 import pytest
 
 @pytest.mark.usefixtures('setup')
-class FormPage:
+class TestRegistration:
 
-    def test_formpage(self):
+    def test_form(self):
         pass
