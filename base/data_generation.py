@@ -19,7 +19,7 @@ def name_email() -> str:
 
         if name[0] not in punctuation and name[-1] not in punctuation:
             for i in range(len(name)):
-                if (name[i] == c for c in punctuation) and (name[i+1] != c for c in punctuation):
+                if (name[i] == c for c in punctuation) and (name[i+1] not in punctuation):
                     return name
 
 # valid name
@@ -50,7 +50,7 @@ def gen_email() -> str:
     if second_domain in ['gmail', 'yahoo', 'hotmail', 'outlook', 'ya']:
         return name_email() + '@' + second_domain + '.' + 'com'
     else:
-        return name_email() + '@' + second_domain + '.' + choice(first_domains)[0]
+        return name_email() + '@' + second_domain + '.' + choice(first_domains + list_domain)[0]
 
 
 # valid password
@@ -73,7 +73,7 @@ def gen_password() -> str:
                 and any(c == char for c in password):
             for i in range(len(password) - 1):
                 if (max(c == space for c in password) == 1) \
-                        or ((password[i] == c for c in char) and (password[i+1] != c for c in char)):
+                        or ((password[i] == c for c in char) and (password[i+1] not in char)):
                     break
             break
     return password
