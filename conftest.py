@@ -8,7 +8,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 def get_chrome_options():
     options = ChromeOptions()
     options.add_argument('chrome')  # Use headless if you do not need a browser UI
-    # options.add_argument('--start-maximized')
+    options.add_argument('--start-maximized')
     # options.add_argument('--start-fullscreen')  # --window-size=1650,900
     return options
 
@@ -16,7 +16,8 @@ def get_chrome_options():
 @pytest.fixture
 def get_webdriver(get_chrome_options):
     options = get_chrome_options
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
+    driver_service = ChromeService(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=driver_service, options=options)
     return driver
 
 
