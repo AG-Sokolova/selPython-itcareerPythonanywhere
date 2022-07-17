@@ -28,7 +28,7 @@ def generated_password() -> str:
                 and any(c == char for c in password):
             for i in range(len(password) - 1):
                 if (max(c == space for c in password) == 1) \
-                        or ((password[i] == c for c in char) and (password[i+1] not in char)):
+                        or ((password[i] == c for c in char) and (password[i+1] != c for c in char)):
                     break
             break
     return password
