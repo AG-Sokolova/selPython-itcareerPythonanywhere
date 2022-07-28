@@ -1,12 +1,17 @@
+import csv
 import secrets
 import string
-from random import randint, choice
-import csv
-import names
+from random import randint
 import faker
-from data.data import Person
+from data.data import Person, TestData
 
 faiker_en = faker.Faker('en')
+
+def open_file_csv(path: str) -> list:
+    with open(path, 'r', encoding='utf-8') as f:
+        list_data = [line.rstrip('\n') for line in f.readlines()]
+    f.close()
+    return list_data
 
 # valid password
 def generated_password() -> str:
@@ -41,6 +46,10 @@ def generated_person():
         password=generated_password()
     )
 
+def generated_testing_data(path):
+    return TestData(
+        list_data=open_file_csv(path)
+    )
 
 # def name_email() -> str:
 #     lower_alphabet = string.ascii_lowercase

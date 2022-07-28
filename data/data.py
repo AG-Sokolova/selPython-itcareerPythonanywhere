@@ -6,3 +6,7 @@ class Person:
     surname: str = None
     email: str = None
     password: str = None
+
+@dataclass
+class TestData:
+    list_data: list = None
