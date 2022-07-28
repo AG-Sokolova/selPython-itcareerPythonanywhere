@@ -61,25 +61,28 @@ def gen_password() -> str:
     space = ' '
     char = '@'
 
-    sell = lower_alphabet + upper_alphabet + numbers + space + char
+    sell = lower_alphabet + upper_alphabet + numbers + char + space
     # len_password = 7
     len_password = randint(8, 16)
 
     while True:
         password = ''.join(secrets.choice(sell) for i in range(len_password)).strip()
-        if sum(c.isdigit() for c in password) >= 1 \
-                and any(c.isupper() for c in password) \
-                and any(c.islower() for c in password) \
-                and any(c == char for c in password):
-            for i in range(len(password) - 1):
-                if (max(c == space for c in password) == 1) \
-                        or ((password[i] == c for c in char) and (password[i+1] not in char)):
-                    break
-            break
+
+        if len(password) > 8:
+            if sum(c.isdigit() for c in password) >= 1 \
+                    and any(c.isupper() for c in password) \
+                    and any(c.islower() for c in password) \
+                    and any(c == char for c in password):
+                for i in range(len(password) - 1):
+                    if (max(c == space for c in password) == 1) \
+                            or ((password[i] == c for c in char) and (password[i + 1] != c for c in char)):
+                        break
+                break
+
     return password
 
 
 print('name:', gen_name() + '\n' +
       'surname:', gen_surname() + '\n' +
       'email:', gen_email() + '\n' +
-      'password:', gen_password())
+      'password:', gen_password().lower())

@@ -7,3 +7,6 @@ class FormPageLocators:
     EMAIL = (By.CSS_SELECTOR, '#email')
     PASSWORD = (By.CSS_SELECTOR, '#password')
     SUBMIT = (By.XPATH, '/html/body/div[2]/div/div/form/center/button')
+
+    RESULT = (By.XPATH, '/html/body/div[2]/div/div/div/strong')
+    RESULT_DESCRIPTION = (By.XPATH, '/html/body/div[2]/div/div/div')
