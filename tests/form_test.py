@@ -10,17 +10,18 @@ from pages.form_page import FormPage
 class TestFormPage:
 
     #form checks
-    @pytest.mark.parametrize("name, surname, email, password", [('', '', '', ''),
-                                                                ('', '', '', '')])
-    def test_vaidation_form(self, name, surname, email, password):
+    @pytest.mark.parametrize("name, surname, email, password",
+                             [(generated_person().name, generated_person().surname, generated_person().email, generated_person().password),
+                              (generated_person().name, '', generated_person().email, generated_person().password)])
+    def test_form(self, name, surname, email, password):
         form_page = FormPage(self.driver)
         form_page.validation_check(name, surname, email, password)
 
     @pytest.mark.parametrize("name, surname, email, password", [('', '', '', ''),
-                                                                ('', '', '', '')])
+                                                                ('', generated_person().surname, '', '')])
     def test_invalid_form(self, name, surname, email, password):
         form_page = FormPage(self.driver)
-        form_page.validation_check(name, surname, email, password)
+        form_page.invalid_check(name, surname, email, password)
 
     # positive checks
     @pytest.mark.parametrize("name", generated_testing_data('../generator/test_src/valid_name.csv').list_data)
@@ -35,13 +36,13 @@ class TestFormPage:
         person = generated_person()
         form_page.validation_check(person.name, surname, person.email, person.password)
 
-    @pytest.mark.parametrize("email", [])
+    @pytest.mark.parametrize("email", generated_testing_data('../generator/test_src/valid_email.csv').list_data)
     def test_vaidation_email(self, email):
         form_page = FormPage(self.driver)
         person = generated_person()
         form_page.validation_check(person.name, person.surname, email, person.password)
 
-    @pytest.mark.parametrize("password", [])
+    @pytest.mark.parametrize("password", generated_testing_data('../generator/test_src/valid_password.csv').list_data)
     def test_vaidation_password(self, password):
         form_page = FormPage(self.driver)
         person = generated_person()
@@ -53,19 +54,19 @@ class TestFormPage:
         person = generated_person()
         form_page.invalid_check(name, person.surname, person.email, person.password)
 
-    @pytest.mark.parametrize("surname", [])
+    @pytest.mark.parametrize("surname", generated_testing_data('../generator/test_src/invalid_surname.csv').list_data)
     def test_invalid_surname(self, surname):
         form_page = FormPage(self.driver)
         person = generated_person()
         form_page.invalid_check(person.name, surname, person.email, person.password)
 
-    @pytest.mark.parametrize("email", [])
+    @pytest.mark.parametrize("email", generated_testing_data('../generator/test_src/invalid_email.csv').list_data)
     def test_invalid_email(self, email):
         form_page = FormPage(self.driver)
         person = generated_person()
         form_page.invalid_check(person.name, person.surname, email, person.password)
 
-    @pytest.mark.parametrize("password", [])
+    @pytest.mark.parametrize("password", generated_testing_data('../generator/test_src/invalid_password.csv').list_data)
     def test_invalid_password(self, password):
         form_page = FormPage(self.driver)
         person = generated_person()

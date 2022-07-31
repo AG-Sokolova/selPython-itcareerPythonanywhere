@@ -3,21 +3,35 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="C:\Users\user\Desktop\invaid_name.csv">
+        <entry key="C:\Users\user\Desktop\invalid_email.csv">
           <value>
             <Attribute>
               <option name="separator" value=":" />
             </Attribute>
           </value>
         </entry>
-        <entry key="C:\Users\user\Desktop\valid_name.csv">
+        <entry key="C:\Users\user\Desktop\invalid_password.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="C:\Users\user\Desktop\valid_surname.csv">
+        <entry key="C:\Users\user\Desktop\invalid_surname.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="C:\Users\user\Desktop\valid_email.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="C:\Users\user\Desktop\valid_password.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -25,6 +39,27 @@
           </value>
         </entry>
         <entry key="\generator\src\country_domains.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\generator\test_src\invalid_name.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\generator\test_src\valid_name.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\generator\test_src\valid_surname.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
